@@ -204,6 +204,7 @@
                             <decimal>${generator.decimal}</decimal>
                         </configuration>
                     </execution>
+                    <!-- 
                     <execution>
                         <id>fix50sp2</id>
                         <goals>
@@ -300,6 +301,7 @@
                             <decimal>${generator.decimal}</decimal>
                         </configuration>
                     </execution>
+                     -->
                 </executions>
             </plugin>
             <plugin>

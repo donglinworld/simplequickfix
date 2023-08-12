@@ -379,5 +379,17 @@
       <value enum="8" description="PASSWORD_EXPIRED"/>
     </field>
     <field number="1410" name="DefaultVerIndicator" type="BOOLEAN"/>
+    <field number="370" name="OnBehalfOfSendingTime" type="UTCTIMESTAMP"/>
+    <field number="380" name="BusinessRejectReason" type="INT">
+      <value enum="0" description="OTHER"/>
+      <value enum="1" description="UNKNOWN_ID"/>
+      <value enum="2" description="UNKNOWN_SECURITY"/>
+      <value enum="3" description="UNSUPPORTED_MESSAGE_TYPE"/>
+      <value enum="4" description="APPLICATION_NOT_AVAILABLE"/>
+      <value enum="5" description="CONDITIONALLY_REQUIRED_FIELD_MISSING"/>
+      <value enum="6" description="NOT_AUTHORIZED"/>
+      <value enum="7" description="DELIVERTO_FIRM_NOT_AVAILABLE_AT_THIS_TIME"/>
+      <value enum="18" description="INVALID_PRICE_INCREMENT"/>
+    </field>
   </fields>
 </fix>
