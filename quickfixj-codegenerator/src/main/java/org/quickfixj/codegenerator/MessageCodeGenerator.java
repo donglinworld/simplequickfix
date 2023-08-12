@@ -334,11 +334,11 @@ public class MessageCodeGenerator {
     public void generate(Task task) {
         try {
             generateFieldClasses(task);
-            generateMessageBaseClass(task);
-            generateMessageFactoryClass(task);
-            generateMessageCrackerClass(task);
-            generateComponentClasses(task);
-            generateMessageSubclasses(task);
+//            generateMessageBaseClass(task);
+//            generateMessageFactoryClass(task);
+//            generateMessageCrackerClass(task);
+//            generateComponentClasses(task);
+//            generateMessageSubclasses(task);
         } catch (RuntimeException e) {
             throw e;
         } catch (Exception e) {

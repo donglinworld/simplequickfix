@@ -59,10 +59,12 @@
 		<module>quickfixj-codegenerator</module>
 		<module>quickfixj-dictgenerator</module>
 		<module>quickfixj-core</module>
+		<!-- 
 		<module>quickfixj-messages</module>
 		<module>quickfixj-examples</module>
 		<module>quickfixj-all</module>
 		<module>quickfixj-distribution</module>
+		 -->
 	</modules>
 
 	<properties>
@@ -87,6 +89,7 @@
 		<maven-deploy-plugin-version>2.8.2</maven-deploy-plugin-version>
 		<nexus-staging-maven-plugin-version>1.6.8</nexus-staging-maven-plugin-version>
 		<build-helper-maven-plugin-version>3.0.0</build-helper-maven-plugin-version>
+		<generator.decimal>true</generator.decimal>
 	</properties>
 
 	<build>
