@@ -7,6 +7,3 @@ cp -f quickfixj-core/target/generated-sources/quickfix/field/*.java quickfixj-co
 rm -rf quickfixj-core/target
 mvn clean
 
-#build
-#mvn -f simple_pom.xml clean package
-
