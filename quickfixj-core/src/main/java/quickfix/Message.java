@@ -797,12 +797,12 @@ public class Message extends FieldMap {
         }
     }
 
-    static boolean isHeaderField(Field<?> field, DataDictionary dd) {
+    public static boolean isHeaderField(Field<?> field, DataDictionary dd) {
         return isHeaderField(field.getField())
                 || (dd != null && dd.isHeaderField(field.getField()));
     }
 
-    static boolean isHeaderField(int field) {
+    public static boolean isHeaderField(int field) {
         switch (field) {
         case BeginString.FIELD:
         case BodyLength.FIELD:
@@ -840,12 +840,12 @@ public class Message extends FieldMap {
         }
     }
 
-    static boolean isTrailerField(Field<?> field, DataDictionary dd) {
+    public static boolean isTrailerField(Field<?> field, DataDictionary dd) {
         return isTrailerField(field.getField())
                 || (dd != null && dd.isTrailerField(field.getField()));
     }
 
-    static boolean isTrailerField(int field) {
+    public static boolean isTrailerField(int field) {
         switch (field) {
         case SignatureLength.FIELD:
         case Signature.FIELD:

@@ -150,7 +150,7 @@ public abstract class FieldMap implements Serializable {
         groups.putAll(fieldMap.groups);
     }
 
-    protected void setGroups(int key, List<Group> groupList) {
+    public void setGroups(int key, List<Group> groupList) {
         groups.put(key, groupList);
     }
 

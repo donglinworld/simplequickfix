@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>simplefix</groupId>
+	<artifactId>simple-quick-fix</artifactId>
+	<version>2.3.1</version>
+	<packaging>jar</packaging>
+	<name>simplequickfix</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<jdkLevel>1.8</jdkLevel>
+		<slf4j.version>1.7.25</slf4j.version>
+		<junit.version>4.12</junit.version>
+		<mainClass />
+
+		<maven-resources-plugin-version>3.1.0</maven-resources-plugin-version>
+		<maven-compiler-plugin-version>3.8.0</maven-compiler-plugin-version>
+		<maven-jar-plugin-version>3.1.0</maven-jar-plugin-version>
+		<maven-surefire-plugin-version>2.22.0</maven-surefire-plugin-version>
+		<maven-pmd-plugin-version>3.10.0</maven-pmd-plugin-version>
+		<maven-source-plugin-version>3.0.1</maven-source-plugin-version>
+		<maven-javadoc-plugin-version>2.10.4</maven-javadoc-plugin-version>
+		<maven-shade-plugin-version>3.1.1</maven-shade-plugin-version>
+		<maven-assembly-plugin-version>3.1.0</maven-assembly-plugin-version>
+		<maven-bundle-plugin-version>3.5.1</maven-bundle-plugin-version>
+		<maven-gpg-plugin-version>1.6</maven-gpg-plugin-version>
+		<maven-deploy-plugin-version>2.8.2</maven-deploy-plugin-version>
+		<nexus-staging-maven-plugin-version>1.6.8</nexus-staging-maven-plugin-version>
+		<build-helper-maven-plugin-version>3.0.0</build-helper-maven-plugin-version>
+	</properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.10</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>tyrex</groupId>
+            <artifactId>tyrex</artifactId>
+            <version>1.0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-core</artifactId>
+            <version>2.0.19</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cloudhopper.proxool</groupId>
+            <artifactId>proxool</artifactId>
+            <version>0.9.1</version>
+            <optional>true</optional>
+            <exclusions>
+                <!-- bug in proxool pom - should be test scope -->
+                <exclusion>
+                    <groupId>avalon-framework</groupId>
+                    <artifactId>avalon-framework-api</artifactId>
+                </exclusion>
+                <!-- we use slf4j which provides this API -->
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudhopper.proxool</groupId>
+            <artifactId>proxool-cglib</artifactId>
+            <version>0.9.1</version>
+            <optional>true</optional>
+            <exclusions>
+                <!-- bug in proxool pom - should be test scope -->
+                <exclusion>
+                    <groupId>avalon-framework</groupId>
+                    <artifactId>avalon-framework-api</artifactId>
+                </exclusion>
+                <!-- we use slf4j which provides this API -->
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <!-- slf4j facade for JCL which is required by proxool -->
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>berkeleydb</groupId>
+            <artifactId>je</artifactId>
+            <version>2.1.30</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+	<build>
+		<sourceDirectory>.</sourceDirectory>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin-version}</version>
+				<inherited>true</inherited>
+				<configuration>
+					<includes>
+						<include>quickfixj-core/src/main/java/**/*.java</include>
+						<include>simplefix/src/main/java/**/*.java</include>
+					</includes>
+					<source>${jdkLevel}</source>
+					<target>${jdkLevel}</target>
+					<meminitial>2g</meminitial>
+					<maxmem>4g</maxmem>
+					<proc>none</proc> 
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven-source-plugin-version}</version>
+				<configuration>
+					<attach>false</attach>
+				</configuration>
+			</plugin>
+
+		</plugins>
+		
+		<outputDirectory>${basedir}/classes</outputDirectory>
+		
+		<resources>
+            <resource>
+                <directory>./quickfixj-messages/quickfixj-messages-fixt11/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>./quickfixj-messages/quickfixj-messages-fix50sp2/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>./quickfixj-messages/quickfixj-messages-fix50sp1/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>./quickfixj-messages/quickfixj-messages-fix50/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>./quickfixj-messages/quickfixj-messages-fix44/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>./quickfixj-messages/quickfixj-messages-fix43/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>./quickfixj-messages/quickfixj-messages-fix42/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>./quickfixj-messages/quickfixj-messages-fix41/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>./quickfixj-messages/quickfixj-messages-fix40/src/main/resources</directory>
+            </resource>
+			<resource>
+				<directory>.</directory>
+				<includes>
+					<include>LICENSE</include>
+				</includes>
+			</resource>
+		</resources>
+		
+		<!-- <testSourceDirectory>quickfixj-core/src/test</testSourceDirectory> -->
+	</build>
+
+	<repositories>
+		<repository>
+			<id>fusesourceRepo</id>
+			<url>http://repo.fusesource.com/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
+</project>

@@ -739,6 +739,25 @@ public class Session implements Closeable {
         return sessions.get(sessionID);
     }
 
+    public static Session lookupSession(final String senderCompID, final String targetCompID) {
+        for (SessionID sessionID : sessions.keySet()) {
+            if (sessionID.getSenderCompID().equals(senderCompID)
+                    && sessionID.getTargetCompID().equals(targetCompID)) {
+                return sessions.get(sessionID);
+            }
+        }
+        return null;
+    }
+
+    public static List<Session> getAllsessions() {
+        List<Session> list = new ArrayList<Session>();
+        for (Session session : sessions.values()) {
+            list.add(session);
+        }
+
+        return list;
+    }
+
     /**
      * This method can be used to manually logon to a FIX session.
      */
