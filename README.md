@@ -1,4 +1,45 @@
-QuickFIX/J
+# SimpleQuickFIX
+
+A simple Java FIX (Financial Information eXchange https://www.fixtrading.org/) Engine based on the following QuickFIX/J.
+
+Main improvements:
+
+1). Providing one simple abstract FIX layer (interfaces)
+Application java source code does not need to directly depend on QuickFIX/J FIX engine classes.
+Application based on simplefix interfaces is very easy to shift to other FIX engine in future.
+
+2). Integrated implementation of Acceptor and Initiator.
+Application java source code does not need to be aware of Acceptor or Initiator, configuration in init file only is enough.
+
+
+Getting started:
+
+1). Select branch QFJ_RELEASE_2_3_1-simplefix and download simplequickfix-QFJ_RELEASE_2_3_1-simplefix.zip.
+
+2). Decompress above file into one directory.
+
+3). Import the project from above directory into Eclipse and try to run simplefix.examples.executor.Executor.java.
+
+4). Try to understand how simpler it is than the original Executor.java in QuickFIX/J.
+
+5). Develop your own FIX Application.
+
+
+Source Recompile:
+
+Checkout branch QFJ_RELEASE_2_3_1-simplefix, run build.sh on unix or its content (mvn command) on windows to rebuild simple-quick-fix-2.3.1.jar which includes both simplefix and quickfixj-core classes.
+Maven is required and version above 3 is suggested for building from sources.
+
+
+Notice:
+
+simplefix does not include the mass of classes for every message type in every FIX version which are created by QuickFIX/J automatically.
+This makes the FIX engine is much lighter and simpler.
+And this also makes the interface is more closed with other commercial FIX engine, such as ULLINK APPIA, ULLINK ULFIX.
+If you think QuickFIX/J's approach is more convenient for your Application, please use QuickFIX/J directly.
+
+FYI, original Readme of
+# QuickFIX/J
 ==========
 [![Java CI](https://github.com/quickfix-j/quickfixj/actions/workflows/maven.yml/badge.svg)](https://github.com/quickfix-j/quickfixj/actions/workflows/maven.yml)
 [![CodeQL](https://github.com/quickfix-j/quickfixj/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/quickfix-j/quickfixj/actions/workflows/codeql-analysis.yml)
