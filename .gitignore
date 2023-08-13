@@ -1,9 +1,5 @@
 # ignore maven build directories
 target/
-# ignore Eclipse configuration files
-.project
-.classpath
-.settings
 # ignore IntelliJ configuration files
 .idea/
 *.iml
@@ -12,3 +8,7 @@ target/
 # ignore NetBeans configuration
 nb-configuration.xml
 classes/
+bin/
+log/
+examples_data/
+
