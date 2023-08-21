@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>simplefix</groupId>
@@ -32,110 +33,110 @@
 		<build-helper-maven-plugin-version>3.0.0</build-helper-maven-plugin-version>
 	</properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.10.19</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>1.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>1.8.0.10</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>tyrex</groupId>
-            <artifactId>tyrex</artifactId>
-            <version>1.0.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-jdk14</artifactId>
-            <version>${slf4j.version}</version>
-            <scope>test</scope>
-        </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>1.8.0.10</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>tyrex</groupId>
+			<artifactId>tyrex</artifactId>
+			<version>1.0.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>test</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>org.apache.mina</groupId>
-            <artifactId>mina-core</artifactId>
-            <version>2.1.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.mina</groupId>
+			<artifactId>mina-core</artifactId>
+			<version>2.1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
 
-        <dependency>
-            <groupId>com.cloudhopper.proxool</groupId>
-            <artifactId>proxool</artifactId>
-            <version>0.9.1</version>
-            <optional>true</optional>
-            <exclusions>
-                <!-- bug in proxool pom - should be test scope -->
-                <exclusion>
-                    <groupId>avalon-framework</groupId>
-                    <artifactId>avalon-framework-api</artifactId>
-                </exclusion>
-                <!-- we use slf4j which provides this API -->
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudhopper.proxool</groupId>
-            <artifactId>proxool-cglib</artifactId>
-            <version>0.9.1</version>
-            <optional>true</optional>
-            <exclusions>
-                <!-- bug in proxool pom - should be test scope -->
-                <exclusion>
-                    <groupId>avalon-framework</groupId>
-                    <artifactId>avalon-framework-api</artifactId>
-                </exclusion>
-                <!-- we use slf4j which provides this API -->
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <!-- slf4j facade for JCL which is required by proxool -->
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${slf4j.version}</version>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>com.sleepycat</groupId>
-            <artifactId>je</artifactId>
-            <version>18.3.12</version>
-            <optional>true</optional>
-        </dependency>
-    </dependencies>
+		<dependency>
+			<groupId>com.cloudhopper.proxool</groupId>
+			<artifactId>proxool</artifactId>
+			<version>0.9.1</version>
+			<optional>true</optional>
+			<exclusions>
+				<!-- bug in proxool pom - should be test scope -->
+				<exclusion>
+					<groupId>avalon-framework</groupId>
+					<artifactId>avalon-framework-api</artifactId>
+				</exclusion>
+				<!-- we use slf4j which provides this API -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.cloudhopper.proxool</groupId>
+			<artifactId>proxool-cglib</artifactId>
+			<version>0.9.1</version>
+			<optional>true</optional>
+			<exclusions>
+				<!-- bug in proxool pom - should be test scope -->
+				<exclusion>
+					<groupId>avalon-framework</groupId>
+					<artifactId>avalon-framework-api</artifactId>
+				</exclusion>
+				<!-- we use slf4j which provides this API -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<!-- slf4j facade for JCL which is required by proxool -->
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.sleepycat</groupId>
+			<artifactId>je</artifactId>
+			<version>18.3.12</version>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<sourceDirectory>.</sourceDirectory>
-		
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -151,7 +152,7 @@
 					<target>${jdkLevel}</target>
 					<meminitial>2g</meminitial>
 					<maxmem>4g</maxmem>
-					<proc>none</proc> 
+					<proc>none</proc>
 				</configuration>
 			</plugin>
 
@@ -159,43 +160,60 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<version>${maven-source-plugin-version}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
-					<attach>false</attach>
+					<attach>true</attach>
+					<includes>
+						<include>**/*</include>
+					</includes>
+					<excludes>
+						<exclude>target/**/*</exclude>
+						<exclude>classes/**/*</exclude>
+						<exclude>bin/**/*</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
 
 		</plugins>
-		
+
 		<outputDirectory>${basedir}/classes</outputDirectory>
-		
+
 		<resources>
-            <resource>
-                <directory>./quickfixj-messages/quickfixj-messages-fixt11/src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>./quickfixj-messages/quickfixj-messages-fix50sp2/src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>./quickfixj-messages/quickfixj-messages-fix50sp1/src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>./quickfixj-messages/quickfixj-messages-fix50/src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>./quickfixj-messages/quickfixj-messages-fix44/src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>./quickfixj-messages/quickfixj-messages-fix43/src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>./quickfixj-messages/quickfixj-messages-fix42/src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>./quickfixj-messages/quickfixj-messages-fix41/src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>./quickfixj-messages/quickfixj-messages-fix40/src/main/resources</directory>
-            </resource>
+			<resource>
+				<directory>./quickfixj-messages/quickfixj-messages-fixt11/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>./quickfixj-messages/quickfixj-messages-fix50sp2/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>./quickfixj-messages/quickfixj-messages-fix50sp1/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>./quickfixj-messages/quickfixj-messages-fix50/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>./quickfixj-messages/quickfixj-messages-fix44/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>./quickfixj-messages/quickfixj-messages-fix43/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>./quickfixj-messages/quickfixj-messages-fix42/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>./quickfixj-messages/quickfixj-messages-fix41/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>./quickfixj-messages/quickfixj-messages-fix40/src/main/resources</directory>
+			</resource>
 			<resource>
 				<directory>.</directory>
 				<includes>
@@ -203,7 +221,7 @@
 				</includes>
 			</resource>
 		</resources>
-		
+
 		<!-- <testSourceDirectory>quickfixj-core/src/test</testSourceDirectory> -->
 	</build>
 
