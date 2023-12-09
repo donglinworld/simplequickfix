@@ -38,7 +38,7 @@ public interface Application {
      * @param session
      *            FIX session
      */
-    void onAppMessage(Message message, Session session);
+    void onRecvAppMessage(Message message, Session session);
 
-    void toAppMessage(Message message, Session session);
+    void onSendAppMessage(Message message, Session session);
 }

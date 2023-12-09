@@ -19,10 +19,23 @@
 
 package quickfix;
 
+import java.io.ByteArrayOutputStream;
+import java.text.DecimalFormat;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import org.quickfixj.CharsetSupport;
 import org.w3c.dom.CDATASection;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
 import quickfix.field.ApplExtID;
 import quickfix.field.ApplVerID;
 import quickfix.field.BeginString;
@@ -57,17 +70,6 @@ import quickfix.field.TargetLocationID;
 import quickfix.field.TargetSubID;
 import quickfix.field.XmlData;
 import quickfix.field.XmlDataLen;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.ByteArrayOutputStream;
-import java.text.DecimalFormat;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Represents a FIX message.
@@ -738,12 +740,20 @@ public class Message extends FieldMap {
                     throw newFieldExceptionMissingDelimiter(groupCountTag, firstField, tag);
                 }
             } else {
-                // QFJ-169/QFJ-791: handle unknown repeating group fields in the body
-                if (!isTrailerField(tag) && !(DataDictionary.HEADER_ID.equals(msgType))) {
-                    if (checkFieldValidation(parent, parentDD, field, msgType, doValidation, group)) {
-                        continue;
-                    }
-                }
+                // The following fix cause other issue: body tags are mistakenly
+                // parsed into repeating group.
+                // Actually we can assume that repeating group fields are always
+                // known and the following fix is not needed.
+                
+                // QFJ-169/QFJ-791: handle unknown repeating group fields in the
+                // body
+                // if (!isTrailerField(tag) &&
+                // !(DataDictionary.HEADER_ID.equals(msgType))) {
+                // if (checkFieldValidation(parent, parentDD, field, msgType,
+                // doValidation, group)) {
+                // continue;
+                // }
+                // }
                 pushBack(field);
                 inGroupParse = false;
             }
